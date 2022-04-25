@@ -1,0 +1,36 @@
+Input:
+   1. If a number:
+     1.1. If (currentToken == isOperator || currentToken == 0) {
+         replace currentToken value with input
+     }
+     1.2. If (currentToken == isNumeric || currentToken == isDecimalPoint) {
+         append input to currentToken
+     }
+   2. If a decimal point:
+     2.1. If (currentToken == isNumeric && !currentToken.contains('.')) {
+         append input to currentToken
+     }
+     2.2. If (currentToken == isOperator) {
+         replace currentToken value with input
+     }
+   3. If an operator:
+     3.1. If (currentToken == isNumeric || currentToken == isDecimalPoint) {
+         replace currentToken value with input
+     }
+     3.2. If (currentToken == isOperator) {
+        3.3. If (input == '-' && (currentToken == isMultiply || currentToken == isDivision) ) {
+          activate unary_operator_input_mode
+        } else {
+          replace currentToken value with input
+        }
+     }
+   4. If equal command:
+     4.1. If (currentToken == isOperator || 'unary_operator_input_mode') {
+       repeat input
+     } else {
+       output solution
+     }
+
+
+Solution program:
+   - if one of the numbers == '.' - output 'Error';
