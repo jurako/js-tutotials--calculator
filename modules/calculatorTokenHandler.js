@@ -5,7 +5,8 @@
 export class TokenHandler {
     constructor() {
         this.tokens = [];
-        this.currentToken = 0;
+        this.currentToken = '0';
+        // alert(this.getLastCharacter(this.currentToken));
     }
 
     parse(input) {
@@ -26,6 +27,17 @@ export class TokenHandler {
     }
 
     clear() {
+
+    }
+
+
+
+    //util functions
+    getLastCharacter(value) {
+        return value.toString().slice(-1);
+    }
+
+    isNumeric(value) {
 
     }
 }

@@ -1,4 +1,4 @@
-import { tokenHandler } from './calculatorTokenHandler.js'
+import { TokenHandler } from './calculatorTokenHandler.js'
 
 const SELECTOR_CALCULATOR = '.calculator';
 const SELECTOR_DISPLAY = '.calculator__display';
@@ -25,12 +25,15 @@ const OPERATOR_CLASSES = ['add', 'sub', 'mul', 'div'];
 
 class Calculator {
     constructor() {
-        this.tokenHandler = new tokenHandler();
+        this.tokenHandler = new TokenHandler();
+        //math parser
+
         this._addEventListeners();
     }
 
     handle(button) {
-
+        //parse
+        //display
     }
 
     _addEventListeners() {
