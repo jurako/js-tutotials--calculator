@@ -7,9 +7,14 @@ export class TokenHandler {
         this.tokens = [];
         this.currentToken = '0';
         // alert(this.getLastCharacter(this.currentToken));
+        // let tmpInp = '+';
+        // alert(this.isOperator(tmpInp));
     }
 
     parse(input) {
+        if(typeof input != 'string' || typeof input != 'number') {
+            return false;
+        }
 
         switch (input) {
             case value:
@@ -33,11 +38,15 @@ export class TokenHandler {
 
 
     //util functions
-    getLastCharacter(value) {
-        return value.toString().slice(-1);
+    isNumeric(input) {
+        return /\d/.test(input.toString());
     }
 
-    isNumeric(value) {
+    isOperator(input) {
+        return /[+-/*]/.test(input.toString());
+    }
 
+    getLastCharacter(input) {
+        return input.toString().slice(-1);
     }
 }
