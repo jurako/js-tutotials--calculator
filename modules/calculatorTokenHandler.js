@@ -15,14 +15,31 @@ export class TokenHandler {
         if(typeof input != 'string' || typeof input != 'number') {
             return false;
         }
+        if(typeof input == 'number') {
+            input = input.toString();
+        }
 
         switch (input) {
-            case value:
 
-                break;
+            case this.isNumeric(input):
+
+                if(this.currentToken == '0') {
+                    this.currentToken = input;
+                }
+
+                if(this.isOperator(this.currentToken)) {
+                    this.currentToken = input;
+                    this.store(this.currentToken);
+                }
+
+                if(this.currentToken == '0') {
+                    this.currentToken = input;
+                }
+
+            break;
 
             default:
-                break;
+            break;
         }
 
     }
@@ -39,14 +56,14 @@ export class TokenHandler {
 
     //util functions
     isNumeric(input) {
-        return /\d/.test(input.toString());
+        return /\d/.test(input);
     }
 
     isOperator(input) {
-        return /[+-/*]/.test(input.toString());
+        return /[+-/*]/.test(input);
     }
 
     getLastCharacter(input) {
-        return input.toString().slice(-1);
+        return input.slice(-1);
     }
 }
