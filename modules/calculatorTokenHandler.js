@@ -12,36 +12,49 @@ export class TokenHandler {
     }
 
     parse(input) {
-        if(typeof input != 'string' || typeof input != 'number') {
+        if (typeof input != 'string' || typeof input != 'number') {
             return false;
         }
-        if(typeof input == 'number') {
+        if (typeof input == 'number') {
             input = input.toString();
         }
 
         switch (input) {
 
             case this.isNumeric(input):
+                this.parseNumber(input);
+                break;
 
-                if(this.currentToken == '0') {
-                    this.currentToken = input;
-                }
-
-                if(this.isOperator(this.currentToken)) {
-                    this.currentToken = input;
-                    this.store(this.currentToken);
-                }
-
-                if(this.currentToken == '0') {
-                    this.currentToken = input;
-                }
-
-            break;
+            case this.isNumeric(input):
+                this.parseNumber(input);
+                break;
 
             default:
-            break;
+                break;
+
         }
 
+    }
+
+    parseNumber(input) {
+        if (this.currentToken == '0') {
+            this.currentToken = input;
+        }
+
+        if (this.isOperator(this.currentToken)) {
+            this.currentToken = input;
+            this.store(this.currentToken);
+        }
+
+        if (this.isNumeric(this.currentToken)) {
+            this.currentToken += input;
+        }
+    }
+
+    parseDecimal(input) {
+        if (this.isNumeric(this.currentToken) || !this.hasDecimal(this.currentToken)) {
+
+        }
     }
 
     store() {
@@ -56,7 +69,7 @@ export class TokenHandler {
 
     //util functions
     isNumeric(input) {
-        return /\d/.test(input);
+        return /[\d\.]/.test(input);
     }
 
     isOperator(input) {
