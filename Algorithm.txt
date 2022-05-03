@@ -34,3 +34,16 @@ Input:
 
 Solution program:
    - if one of the numbers == '.' - output 'Error';
+
+
+  State pattern:
+   states: 
+      - no input (initial state);
+      - operand input;
+      - operator input;
+      - show result;
+   operations:
+      - inputNumber();
+      - inputDecimal();
+      - inputOperator();
+      - getResult();

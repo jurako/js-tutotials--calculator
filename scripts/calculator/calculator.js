@@ -1,4 +1,4 @@
-import { TokenHandler } from './calculatorTokenHandler.js'
+import { TokenHandler } from '../calculatorTokenHandler.js'
 
 const SELECTOR_CALCULATOR = '.calculator';
 const SELECTOR_DISPLAY = '.calculator__display';
@@ -23,8 +23,14 @@ const CALCULATE = 'eq';
 
 const OPERATOR_CLASSES = ['add', 'sub', 'mul', 'div'];
 
-class Calculator {
+export class Calculator {
+
     constructor() {
+        this.currentState = 'noInput'
+
+
+
+
         this.tokenHandler = new TokenHandler();
         //math parser
 
