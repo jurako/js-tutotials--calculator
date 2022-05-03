@@ -1,5 +1,10 @@
 import { TokenHandler } from '../calculatorTokenHandler.js'
 
+import { noInputState } from './noInputState.js';
+import { operandInputState } from './operandInputState.js';
+import { operatorInputState } from './operatorInputState.js';
+import { showResultState } from './showResultState.js';
+
 const SELECTOR_CALCULATOR = '.calculator';
 const SELECTOR_DISPLAY = '.calculator__display';
 
