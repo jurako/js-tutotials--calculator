@@ -26,63 +26,9 @@ const OPERATOR_CLASSES = ['add', 'sub', 'mul', 'div'];
  * Parses input characters into tokens
  * and stores all tokens in array
  */
-export class TokenHandler {
+export class InputHandler {
     constructor() {
-        this.tokens = [];
-        this.currentToken = '0';
-
-        //math parser
-
         this._addEventListeners();
-        // alert(this.getLastCharacter(this.currentToken));
-        // let tmpInp = '+';
-        // alert(this.isOperator(tmpInp));
-    }
-
-    parse(input) {
-        if (typeof input != 'string' || typeof input != 'number') {
-            return false;
-        }
-        if (typeof input == 'number') {
-            input = input.toString();
-        }
-
-        switch (input) {
-
-            case this.isNumeric(input):
-                this.parseNumber(input);
-                break;
-
-            case this.isNumeric(input):
-                this.parseNumber(input);
-                break;
-
-            default:
-                break;
-
-        }
-
-    }
-
-    parseNumber(input) {
-        if (this.currentToken == '0') {
-            this.currentToken = input;
-        }
-
-        if (this.isOperator(this.currentToken)) {
-            this.currentToken = input;
-            this.store(this.currentToken);
-        }
-
-        if (this.isNumeric(this.currentToken)) {
-            this.currentToken += input;
-        }
-    }
-
-    parseDecimal(input) {
-        if (this.isNumeric(this.currentToken) || !this.hasDecimal(this.currentToken)) {
-
-        }
     }
 
     store() {

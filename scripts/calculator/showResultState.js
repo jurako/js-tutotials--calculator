@@ -16,7 +16,11 @@ export class showResultState {
         console.log('Input operator showResultState!');
     }
 
-    getResult() {
-        console.log('Get result showResultState!');
+    evaluate() {
+        console.log('Evaluate showResultState!');
+    }
+
+    clear() {
+        console.log('Clear showResultState!');
     }
 }

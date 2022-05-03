@@ -16,7 +16,11 @@ export class operatorInputState {
         console.log('Input operator operatorInputState!');
     }
 
-    getResult() {
-        console.log('Get result operatorInputState!');
+    evaluate() {
+        console.log('Evaluate operatorInputState!');
+    }
+
+    clear() {
+        console.log('Clear operatorInputState!');
     }
 }

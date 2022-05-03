@@ -1,5 +1,3 @@
-import { TokenHandler } from '../calculatorTokenHandler.js'
-
 import { noInputState } from './noInputState.js';
 import { operandInputState } from './operandInputState.js';
 import { operatorInputState } from './operatorInputState.js';
@@ -14,9 +12,42 @@ export class Calculator {
         this.showResultState = new showResultState(this);
 
         this.calculatorState = this.noInputState;
+
+        this.currentToken = '0';
+        this.tokens = [];
     }
 
-    setCalculatorState() {
+    inputNumber(value) {
+        this.calculatorState.inputNumber(value);
+    }
 
+    inputDecimal(value) {
+        this.calculatorState.inputDecimal(value);
+    }
+
+    inputOperator(value) {
+        this.calculatorState.inputOperator(value);
+    }
+
+    evaluate(value) {
+        this.calculatorState.evaluate(value);
+    }
+
+
+    setCalculatorState(newCalculatorState) {
+        this.calculatorState = newCalculatorState;
+    }
+
+    getNoInputState() {
+        return this.noInputState;
+    }
+    getOperandInputState() {
+        return this.operandInputState;
+    }
+    getOperatorInputState() {
+        return this.operatorInputState;
+    }
+    getShowResultState() {
+        return this.showResultState;
     }
 }

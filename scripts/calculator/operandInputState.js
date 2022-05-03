@@ -16,7 +16,11 @@ export class operandInputState {
         console.log('Input operator operandInputState!');
     }
 
-    getResult() {
-        console.log('Get result operandInputState!');
+    evaluate() {
+        console.log('Evaluate operandInputState!');
+    }
+
+    clear() {
+        console.log('Clear operandInputState!');
     }
 }

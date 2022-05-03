@@ -16,7 +16,11 @@ export class noInputState {
         console.log('Input operator noInputState!');
     }
 
-    getResult() {
-        console.log('Get result noInputState!');
+    evaluate() {
+        console.log('Evaluate noInputState!');
+    }
+
+    clear() {
+        console.log('Clear noInputState!');
     }
 }
