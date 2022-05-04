@@ -4,15 +4,15 @@ export class operatorInputState {
         this.calculator = newCalculator;
     }
 
-    inputNumber() {
+    inputNumber(value) {
         console.log('Input number operatorInputState!');
     }
 
-    inputDecimal() {
+    inputDecimal(value) {
         console.log('Input decimal operatorInputState!');
     }
 
-    inputOperator() {
+    inputOperator(value) {
         console.log('Input operator operatorInputState!');
     }
 

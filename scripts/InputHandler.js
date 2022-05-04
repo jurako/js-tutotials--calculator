@@ -28,47 +28,37 @@ const OPERATOR_CLASSES = ['add', 'sub', 'mul', 'div'];
  */
 export class InputHandler {
     constructor() {
-        this._addEventListeners();
+        this.inputSource = 'HTML';
+
+        if(this.inputSource) {
+            this._addEventListeners();
+        }
     }
 
-    store() {
+    dispatch(inputType, inputValue) {
+        alert('testasdf');
+        const button = event.target.dataset.role;
 
-    }
-
-    clear() {
-
-    }
-
-
-
-    handle(button) {
+        if (button) {
+            this.handle(button);
+        }
         //parse
         //display
     }
 
     _addEventListeners() {
         document.querySelector(SELECTOR_CALCULATOR).addEventListener('click', function (event) {
-            alert('test');
+            let input = event.currentTarget.dataset;
 
-            const button = event.target.dataset.role;
-
-            if (button) {
-                this.handle(button);
+            if(this.isValid(input.value)) {
+                this.dispatch(input.type, input.value);
             }
 
         }.bind(this));
     }
 
     //util functions
-    isNumeric(input) {
-        return /[\d\.]/.test(input);
-    }
-
-    isOperator(input) {
-        return /[+-/*]/.test(input);
-    }
-
-    getLastCharacter(input) {
-        return input.slice(-1);
+    isValid(value) {
+        return /[0-9\.\+\-\*\\\=]/.test(value);
     }
 }

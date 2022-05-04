@@ -29,8 +29,12 @@ export class Calculator {
         this.calculatorState.inputOperator(value);
     }
 
-    evaluate(value) {
-        this.calculatorState.evaluate(value);
+    evaluate() {
+        this.calculatorState.evaluate();
+    }
+
+    clear() {
+        this.calculatorState.clear();
     }
 
 
