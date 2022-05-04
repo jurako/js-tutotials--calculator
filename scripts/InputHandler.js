@@ -37,18 +37,14 @@ export class InputHandler {
 
     dispatch(inputType, inputValue) {
         alert('testasdf');
-        const button = event.target.dataset.role;
 
-        if (button) {
-            this.handle(button);
-        }
         //parse
         //display
     }
 
     _addEventListeners() {
         document.querySelector(SELECTOR_CALCULATOR).addEventListener('click', function (event) {
-            let input = event.currentTarget.dataset;
+            let input = event.target.dataset;
 
             if(this.isValid(input.value)) {
                 this.dispatch(input.type, input.value);
@@ -59,6 +55,6 @@ export class InputHandler {
 
     //util functions
     isValid(value) {
-        return /[0-9\.\+\-\*\\\=]/.test(value);
+        return /[0-9\+\-\*\/]/.test(value);
     }
 }
