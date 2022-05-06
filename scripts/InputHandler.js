@@ -1,60 +1,47 @@
+import { Calculator } from "./calculator/calculator.js";
 
 const SELECTOR_CALCULATOR = '.calculator';
-const SELECTOR_DISPLAY = '.calculator__display';
 
-const SELECTOR_ADD = '.calculator__button.add';
-const SELECTOR_SUB = '.calculator__button.sub';
-const SELECTOR_MUL = '.calculator__button.mul';
-const SELECTOR_DIV = '.calculator__button.div';
-const SELECTOR_CLEAR = '.calculator__clear';
-const SELECTOR_EQUALS = '.calculator__eq';
-const SELECTOR_NUMBER = '.calculator__button';
-const SELECTOR_DECIMAL_POINT = '.calculator__dec-point';
-
-//button roles
-const CLEAR = 'clear';
-const NUMBER = 'number';
-const DECIMAL = 'dec';
-const OPERATOR = 'operator';
-const CALCULATE = 'eq';
-
-
-
-const OPERATOR_CLASSES = ['add', 'sub', 'mul', 'div'];
-
-/**
- * Parses input characters into tokens
- * and stores all tokens in array
- */
 export class InputHandler {
     constructor() {
-        this.inputSource = 'HTML';
 
-        if(this.inputSource) {
-            this._addEventListeners();
+        this.calculator = new Calculator();
+        this.map = {
+            'num': 'inputNumber',
+            'dec': 'inputDecimal',
+            'op': 'inputOperator',
+            'eq': 'evaluate',
+            'clr': 'clear',
         }
-    }
 
-    dispatch(inputType, inputValue) {
-        alert('testasdf');
+        this._addEventListeners();
 
-        //parse
-        //display
     }
 
     _addEventListeners() {
-        document.querySelector(SELECTOR_CALCULATOR).addEventListener('click', function (event) {
-            let input = event.target.dataset;
-
-            if(this.isValid(input.value)) {
-                this.dispatch(input.type, input.value);
-            }
-
-        }.bind(this));
+        document.querySelector(SELECTOR_CALCULATOR).addEventListener('click', this.handle.bind(this));
     }
 
-    //util functions
-    isValid(value) {
-        return /[0-9\+\-\*\/]/.test(value);
+    handle(event) {
+        let target = event.target.dataset;
+        if (this.isValidInput(target.value)) {
+            this.dispatch(target.key, target.value);
+        }
     }
+
+    dispatch(key, value) {
+        if (this.calculatorHas(key)) {
+            let method = this.map[key];
+            this.calculator[method](value);
+        }
+    }
+
+    calculatorHas(key) {
+        return this.map[key] !== undefined;
+    }
+
+    isValidInput(value) {
+        return /[0-9+\-*\/=.C]/.test(value);
+    }
+
 }

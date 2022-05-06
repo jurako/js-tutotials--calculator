@@ -1,0 +1,1 @@
+const SELECTOR_DISPLAY = '.calculator__display';
