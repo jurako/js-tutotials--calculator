@@ -4,8 +4,6 @@ import { operatorInputState } from './operatorInputState.js';
 import { unaryOperatorInputState } from './unaryOperatorInputState.js';
 import { showResultState } from './showResultState.js';
 
-const SELECTOR_CALC_DISPLAY = '.calculator__display';
-
 export class Calculator {
 
     constructor() {
@@ -19,8 +17,6 @@ export class Calculator {
 
         this.currentToken = '0';
         this.tokens = [];
-
-        this.display = document.querySelector(SELECTOR_CALC_DISPLAY);
     }
 
     inputNumber(value) {

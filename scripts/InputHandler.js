@@ -1,4 +1,5 @@
 import { Calculator } from "./calculator/calculator.js";
+import { DisplayHandler } from "./DisplayHandler.js";
 
 const SELECTOR_CALCULATOR = '.calculator';
 
@@ -6,6 +7,7 @@ export class InputHandler {
 
     constructor() {
         this.calculator = new Calculator();
+        this.displayHandler = new DisplayHandler(this.calculator);
         this.map = {
             'num': 'inputNumber',
             'dec': 'inputDecimal',
@@ -24,7 +26,7 @@ export class InputHandler {
 
     handleInputAndUpdateDisplay(event) {
         this.handleInput(event);
-        this.calculator.updateDisplay();
+        this.displayHandler.update();
     }
 
     handleInput(event) {
