@@ -3,8 +3,8 @@ import { Calculator } from "./calculator/calculator.js";
 const SELECTOR_CALCULATOR = '.calculator';
 
 export class InputHandler {
-    constructor() {
 
+    constructor() {
         this.calculator = new Calculator();
         this.map = {
             'num': 'inputNumber',
@@ -15,24 +15,30 @@ export class InputHandler {
         }
 
         this._addEventListeners();
-
     }
 
     _addEventListeners() {
-        document.querySelector(SELECTOR_CALCULATOR).addEventListener('click', this.handle.bind(this));
+        document.querySelector(SELECTOR_CALCULATOR)
+            .addEventListener('click', this.handleInputAndUpdateDisplay.bind(this));
     }
 
-    handle(event) {
+    handleInputAndUpdateDisplay(event) {
+        this.handleInput(event);
+        this.calculator.updateDisplay();
+    }
+
+    handleInput(event) {
         let target = event.target.dataset;
+
         if (this.isValidInput(target.value)) {
-            this.dispatch(target.key, target.value);
+            this.dispatch(target);
         }
     }
 
-    dispatch(key, value) {
-        if (this.calculatorHas(key)) {
-            let method = this.map[key];
-            this.calculator[method](value);
+    dispatch(target) {
+        if (this.calculatorHas(target.key)) {
+            let method = this.map[target.key];
+            this.calculator[method](target.value);
         }
     }
 
