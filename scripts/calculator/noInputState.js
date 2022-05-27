@@ -34,8 +34,7 @@ export class noInputState {
     evaluate() {
         console.log('Evaluate noInputState!');
 
-        //call math parser calc method
-        this.calculator.setCalculatorState(this.calculator.getShowResultState());
+        //do nothing
     }
 
     clear() {

@@ -29,9 +29,14 @@ export class showResultState {
 
     evaluate() {
         console.log('Evaluate showResultState!');
+
+        //do nothing
     }
 
     clear() {
         console.log('Clear showResultState!');
+
+        this.calculator.resetTokens();
+        this.calculator.setCalculatorState(this.calculator.getNoInputState());
     }
 }
