@@ -6,36 +6,42 @@ export class noInputState {
 
     inputNumber(value) {
         console.log('Input number noInputState!');
+
         this.calculator.currentToken = value;
         this.calculator.setCalculatorState(this.calculator.getOperandInputState());
     }
 
     inputDecimal(value) {
         console.log('Input decimal noInputState!');
+
         this.calculator.currentToken = value;
         this.calculator.setCalculatorState(this.calculator.getOperandInputState());
     }
 
     inputOperator(value) {
+        console.log('Input operator noInputState!');
 
         if (value == '-') {
             this.calculator.setCalculatorState(this.calculator.getUnaryOperatorInputState());
         } else {
-            this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
             this.calculator.storeCurrentToken();
+            this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
         }
 
         this.calculator.currentToken = value;
-
-
-        console.log('Input operator noInputState!');
     }
 
     evaluate() {
         console.log('Evaluate noInputState!');
+
+        //call math parser calc method
+        this.calculator.setCalculatorState(this.calculator.getShowResultState());
     }
 
     clear() {
         console.log('Clear noInputState!');
+
+        this.calculator.resetTokens();
+        this.calculator.setCalculatorState(this.calculator.getNoInputState());
     }
 }

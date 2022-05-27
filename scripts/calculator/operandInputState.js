@@ -6,6 +6,8 @@ export class operandInputState {
 
     inputNumber(value) {
         console.log('Input number operandInputState!');
+
+        this.calculator.currentToken += value;
     }
 
     inputDecimal(value) {
@@ -22,5 +24,8 @@ export class operandInputState {
 
     clear() {
         console.log('Clear operandInputState!');
+
+        this.calculator.resetTokens();
+        this.calculator.setCalculatorState(this.calculator.getNoInputState());
     }
 }

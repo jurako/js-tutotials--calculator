@@ -5,7 +5,7 @@ export class DisplayHandler {
         this.display = document.querySelector(SELECTOR_CALC_DISPLAY);
         this.calculator = calculator;
 
-        this.entities = {
+        this.htmlEntities = {
             '*': '&times;',
             '/': '&divide;'
         }
@@ -17,18 +17,20 @@ export class DisplayHandler {
     }
 
     getOutput() {
-        console.log(this.entities);
-        let output = this.calculator
-            .tokens
-            .map(this.replaceCharactersWithEntities)
-            .join(' ');
-
-        return output ? output + ' ' + this.calculator.currentToken : this.calculator.currentToken;
+        let tokens = this.getTokens();
+        return tokens.join(' ');
     }
 
-    replaceCharactersWithEntities(token) {
-        console.log(this.entities);
-        console.log(token);
-        return this.entities[token] !== undefined ? this.entities[token] : token;
+    getTokens() {
+        let tokens = this.calculator.tokens.concat([this.calculator.currentToken]);
+        return this.substituteWithEntities(tokens);
+    }
+
+    substituteWithEntities(tokens) {
+        if (!tokens) return [];
+
+        return tokens.map(function (token) {
+            return this.htmlEntities[token] !== undefined ? this.htmlEntities[token] : token;
+        }.bind(this));
     }
 }

@@ -63,4 +63,9 @@ export class Calculator {
     storeCurrentToken() {
         this.tokens.push(this.currentToken);
     }
+
+    resetTokens() {
+        this.tokens = [];
+        this.currentToken = '0';
+    }
 }
