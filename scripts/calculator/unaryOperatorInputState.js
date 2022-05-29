@@ -6,10 +6,16 @@ export class unaryOperatorInputState {
 
     inputNumber(value) {
         console.log('Input number unaryOperatorInputState!');
+
+        this.calculator.currentToken += value;
     }
 
     inputDecimal(value) {
         console.log('Input decimal unaryOperatorInputState!');
+
+        if (this.calculator.currentToken.indexOf('.') == -1) {
+            this.calculator.currentToken += value;
+        }
     }
 
     inputOperator(value) {

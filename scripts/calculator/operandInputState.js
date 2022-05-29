@@ -13,7 +13,7 @@ export class operandInputState {
     inputDecimal(value) {
         console.log('Input decimal operandInputState!');
 
-        if(this.calculator.currentToken.indexOf('.') == -1) {
+        if (this.calculator.currentToken.indexOf('.') == -1) {
             this.calculator.currentToken += value;
         }
     }
@@ -21,9 +21,10 @@ export class operandInputState {
     inputOperator(value) {
         console.log('Input operator operandInputState!');
 
-        this.calculator.currentToken = value;
         this.calculator.storeCurrentToken();
         this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
+
+        this.calculator.currentToken = value;
     }
 
     evaluate() {
