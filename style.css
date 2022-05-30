@@ -113,4 +113,6 @@ body {
     justify-content: right;
     align-items: center;
     padding-right: 10px;
+    overflow: hidden;
+    white-space: nowrap;
 }

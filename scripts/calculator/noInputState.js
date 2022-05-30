@@ -24,10 +24,10 @@ export class noInputState {
         if (value == '-') {
             this.calculator.setCalculatorState(this.calculator.getUnaryOperatorInputState());
         } else {
+            this.calculator.storeCurrentToken();
             this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
         }
 
-        this.calculator.storeCurrentToken();
         this.calculator.currentToken = value;
     }
 

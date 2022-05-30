@@ -20,13 +20,27 @@ export class unaryOperatorInputState {
 
     inputOperator(value) {
         console.log('Input operator unaryOperatorInputState!');
+
+        if(this.calculator.currentToken.length > 1) {
+            this.calculator.storeCurrentToken();
+            this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
+            this.calculator.currentToken = value;
+        }
     }
 
     evaluate() {
         console.log('Evaluate unaryOperatorInputState!');
+
+        if(this.calculator.currentToken.length > 1) {
+            //call math parser
+            this.calculator.setCalculatorState(this.calculator.getShowResultState());
+        }
     }
 
     clear() {
         console.log('Clear unaryOperatorInputState!');
+
+        this.calculator.resetTokens();
+        this.calculator.setCalculatorState(this.calculator.getNoInputState());
     }
 }

@@ -26,11 +26,13 @@ export class operatorInputState {
         console.log('Input operator operatorInputState!');
 
         if (this.calculator.currentToken != value) {
-            if (value == '-') {
+            
+            if ((this.calculator.currentToken == '*' || this.calculator.currentToken == '/') && value == '-') {
+                this.calculator.storeCurrentToken();
                 this.calculator.setCalculatorState(this.calculator.getUnaryOperatorInputState());
-            } else {
-                this.calculator.currentToken = value;
             }
+
+            this.calculator.currentToken = value;
         }
     }
 

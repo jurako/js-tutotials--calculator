@@ -1,5 +1,5 @@
 import { Calculator } from "./calculator/calculator.js";
-import { DisplayHandler } from "./DisplayHandler.js";
+import { DisplayHandler } from "./displayHandler.js";
 
 const SELECTOR_CALCULATOR = '.calculator';
 
