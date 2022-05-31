@@ -4,6 +4,8 @@ import { operatorInputState } from './operatorInputState.js';
 import { unaryOperatorInputState } from './unaryOperatorInputState.js';
 import { showResultState } from './showResultState.js';
 
+import { MathParser } from './mathParser/mathParser.js';
+
 export class Calculator {
 
     constructor() {
@@ -14,6 +16,8 @@ export class Calculator {
         this.showResultState = new showResultState(this);
 
         this.calculatorState = this.noInputState;
+
+        this.mathParser = new MathParser();
 
         this.currentToken = '0';
         this.tokens = [];

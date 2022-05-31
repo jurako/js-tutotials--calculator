@@ -2,6 +2,8 @@ export class noInputState {
 
     constructor(newCalculator) {
         this.calculator = newCalculator;
+        console.log('calculator');
+        console.log(newCalculator);
     }
 
     inputNumber(value) {
