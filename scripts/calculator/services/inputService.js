@@ -1,11 +1,11 @@
 import { Calculator } from "./../calculator.js";
 import { DisplayService } from "./displayService.js";
 
-const SELECTOR_CALCULATOR = '.calculator';
-
 export class InputService {
 
     constructor() {
+        console.log('Calculator');
+        console.log(Calculator);
         this.calculator = new Calculator();
         this.displayService = new DisplayService(this.calculator);
         this.map = {
@@ -15,16 +15,13 @@ export class InputService {
             'eq': 'evaluate',
             'clr': 'clear',
         }
-
-        this._addEventListeners();
     }
 
-    _addEventListeners() {
-        document.querySelector(SELECTOR_CALCULATOR)
-            .addEventListener('click', this.handleInputAndUpdateDisplay.bind(this));
-    }
-
-    handleInputAndUpdateDisplay(event) {
+    static handleInputAndUpdateDisplay(event) {
+        console.log('test1');
+        console.log(this);
+        console.log('test2');
+        console.log(this.handleInput);
         this.handleInput(event);
         this.displayService.update();
     }

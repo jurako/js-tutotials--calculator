@@ -1,3 +1,7 @@
-import { InputService } from './calculator/services/inputService.js';
+import { Calculator } from './calculator/calculator.js';
 
-const inputService = new InputService();
+
+let calculatorElements = document.querySelectorAll('.calculator');
+for (let i = 0; i < calculatorElements.length; i++) {
+    new Calculator( calculatorElements[i] );
+}
