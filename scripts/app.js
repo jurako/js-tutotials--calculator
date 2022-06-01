@@ -1,3 +1,3 @@
-import { InputHandler } from './scripts/inputHandler.js';
+import { InputService } from './calculator/services/inputService.js';
 
-const inputHandler = new InputHandler();
+const inputService = new InputService();

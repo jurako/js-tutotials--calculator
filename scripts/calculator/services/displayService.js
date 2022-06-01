@@ -1,6 +1,6 @@
 const SELECTOR_CALC_DISPLAY = '.calculator__display';
 
-export class DisplayHandler {
+export class DisplayService {
     constructor(calculator) {
         this.display = document.querySelector(SELECTOR_CALC_DISPLAY);
         this.calculator = calculator;

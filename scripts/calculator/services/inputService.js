@@ -1,13 +1,13 @@
-import { Calculator } from "./calculator/calculator.js";
-import { DisplayHandler } from "./displayHandler.js";
+import { Calculator } from "./../calculator.js";
+import { DisplayService } from "./displayService.js";
 
 const SELECTOR_CALCULATOR = '.calculator';
 
-export class InputHandler {
+export class InputService {
 
     constructor() {
         this.calculator = new Calculator();
-        this.displayHandler = new DisplayHandler(this.calculator);
+        this.displayService = new DisplayService(this.calculator);
         this.map = {
             'num': 'inputNumber',
             'dec': 'inputDecimal',
@@ -26,7 +26,7 @@ export class InputHandler {
 
     handleInputAndUpdateDisplay(event) {
         this.handleInput(event);
-        this.displayHandler.update();
+        this.displayService.update();
     }
 
     handleInput(event) {

@@ -1,10 +1,10 @@
-import { noInputState } from './noInputState.js';
-import { operandInputState } from './operandInputState.js';
-import { operatorInputState } from './operatorInputState.js';
-import { unaryOperatorInputState } from './unaryOperatorInputState.js';
-import { showResultState } from './showResultState.js';
+import { noInputState } from './states/noInputState.js';
+import { operandInputState } from './states/operandInputState.js';
+import { operatorInputState } from './states/operatorInputState.js';
+import { unaryOperatorInputState } from './states/unaryOperatorInputState.js';
+import { showResultState } from './states/showResultState.js';
 
-import { MathParser } from './mathParser/mathParser.js';
+import { MathParser } from './mathParser/main.js';
 
 export class Calculator {
 

@@ -1,4 +1,4 @@
-import Queue from './mathParser/queue.js';
+import { Queue } from '../libs/queue.js';
 
 export class MathParser {
     constructor(tokens) {
@@ -36,7 +36,7 @@ export class MathParser {
     }
 
     isOperator(token) {
-        return /+-*\//.test(token);
+        return /\+-*\//.test(token);
     }
 
 }
