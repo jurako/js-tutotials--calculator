@@ -2,8 +2,8 @@ const SELECTOR_CALC_DISPLAY = '.calculator__display';
 
 export class DisplayService {
     constructor(calculator) {
-        this.display = document.querySelector(SELECTOR_CALC_DISPLAY);
         this.calculator = calculator;
+        this.display = this.calculator.domElement.querySelector(SELECTOR_CALC_DISPLAY);
 
         this.htmlEntities = {
             '*': '&times;',

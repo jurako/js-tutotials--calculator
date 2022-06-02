@@ -5,11 +5,15 @@ import { unaryOperatorInputState } from './states/unaryOperatorInputState.js';
 import { showResultState } from './states/showResultState.js';
 
 import { InputService } from './services/inputService.js';
+import { DisplayService } from "./services/displayService.js";
 import { MathParser } from './mathParser/main.js';
 
 export class Calculator {
 
     constructor(newCalculator) {
+        this.init(newCalculator);
+        this.domElement = newCalculator;
+
         this.noInputState = new noInputState(this);
         this.operandInputState = new operandInputState(this);
         this.operatorInputState = new operatorInputState(this);
@@ -18,12 +22,12 @@ export class Calculator {
 
         this.calculatorState = this.noInputState;
 
+        this.inputService = new InputService(this);
+        this.displayService = new DisplayService(this);
         this.mathParser = new MathParser();
 
         this.currentToken = '0';
         this.tokens = [];
-
-        this.init(newCalculator);
     }
 
     inputNumber(value) {
@@ -77,6 +81,11 @@ export class Calculator {
     }
 
     init(newCalculator) {
-        newCalculator.addEventListener('click', function(event) { InputService.handleInputAndUpdateDisplay(event); });
+        newCalculator.addEventListener('click', function (event) {
+
+            this.inputService.handleInput(event);
+            this.displayService.update();
+
+        }.bind(this));
     }
 }
