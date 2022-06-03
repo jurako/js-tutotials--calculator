@@ -1,28 +1,25 @@
 import { Queue } from '../libs/queue.js';
+import { ShuntingYard } from './shuntingYard.js'
+import { PostfixCalculator } from './postfixCalculator.js'
+
 
 export class MathParser {
     constructor(tokens) {
-        this.operatorStack = [];
-        this.outputQueue = new Queue();
-        this.tokens = tokens;
-
-        this.operatorPrecedence = {
-            1: ['*', '/'],
-            2: ['+', '-']
-        }
+        this.shuntingYard = new ShuntingYard();
+        this.postfixCalculator = new PostfixCalculator();
     }
 
     execute() {
-        for(let i = 0; i < this.tokens.length; i++) {
-            this.parse( this.tokens[i] );
+        for (let i = 0; i < this.tokens.length; i++) {
+            this.parse(this.tokens[i]);
         }
     }
 
     //Shunting Yard Algorithm
     parse() {
-        if(this.isOperand(token)) {
+        if (this.isOperand(token)) {
             this.outputQueue.enqueue(token);
-        } else if(this.isOperator(token)) {
+        } else if (this.isOperator(token)) {
             //getOperatorPrecedence
             this.operatorStack
         } else {
