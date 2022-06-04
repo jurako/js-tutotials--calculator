@@ -1,3 +1,5 @@
-export class PostfixCalculator() {
+export class PostfixCalculator {
+    constructor(){
 
+    }
 }

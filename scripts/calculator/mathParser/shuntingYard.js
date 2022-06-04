@@ -1,12 +1,13 @@
+import { isOperand, isOperator } from '../libs/utils.js';
+
 export class ShuntingYard {
-    constructor(tokens) {
-        this.result = 0;
+    constructor() {
+        this.outputQueue = [],
         this.operatorStack = [];
-        this.outputQueue = new Queue();
 
         this.operatorPrecedence = {
-            1: ['*', '/'],
-            2: ['+', '-']
+            1: ['+', '-'],
+            2: ['*', '/']
         }
     }
 
@@ -16,10 +17,43 @@ export class ShuntingYard {
             this.parse(tokens[i]);
         }
 
-        return this.result;
+        this.popOperatorStack();
+
+        return this.outputQueue;
     }
 
     parse(token) {
+        if ( isOperand(token) ) {
+            this.handleOperand(token);
+        } else if ( isOperator(token) ) {
+            this.handleOperator(token);
+        } else {
+            //throw Error;
+        }
+    }
 
+    handleOperand(token) {
+        this.outputQueue.push(token);
+    }
+
+    handleOperator(token) {
+        let op1 = this.getPrecedence(token),
+            op2 = this.getPrecedence(this.operatorStack.at(-1));
+
+        while (op1 <= op2 && this.operatorStack.length > 0) {
+            this.outputQueue.push( this.operatorStack.pop() );
+        }
+
+        this.operatorStack.push(token);
+    }
+
+    getPrecedence(token) {
+        return Object.keys(this.operatorPrecedence).find(key => this.operatorPrecedence[key].includes(token));
+    }
+
+    popOperatorStack() {
+        while (this.operatorStack.length) {
+            this.outputQueue.push( this.operatorStack.pop() );
+        }
     }
 }

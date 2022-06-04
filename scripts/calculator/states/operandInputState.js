@@ -30,7 +30,8 @@ export class operandInputState {
     evaluate() {
         console.log('Evaluate operandInputState!');
 
-        //call math parser
+        this.calculator.storeCurrentToken();
+        this.calculator.mathParser.execute(this.calculator.tokens);
         this.calculator.setCalculatorState(this.calculator.getShowResultState());
     }
 

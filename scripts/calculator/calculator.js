@@ -72,7 +72,9 @@ export class Calculator {
 
 
     storeCurrentToken() {
-        this.tokens.push(this.currentToken);
+        if(this.currentToken.length) {
+            this.tokens.push(this.currentToken);
+        }
     }
 
     resetTokens() {
