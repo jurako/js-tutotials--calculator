@@ -2,7 +2,7 @@ import { isOperand, isOperator } from '../libs/utils.js';
 
 export class ShuntingYard {
     constructor() {
-        this.outputQueue = [],
+        this.outputQueue = [];
         this.operatorStack = [];
 
         this.operatorPrecedence = {
@@ -23,9 +23,9 @@ export class ShuntingYard {
     }
 
     parse(token) {
-        if ( isOperand(token) ) {
+        if (isOperand(token)) {
             this.handleOperand(token);
-        } else if ( isOperator(token) ) {
+        } else if (isOperator(token)) {
             this.handleOperator(token);
         } else {
             //throw Error;
@@ -41,7 +41,7 @@ export class ShuntingYard {
             op2 = this.getPrecedence(this.operatorStack.at(-1));
 
         while (op1 <= op2 && this.operatorStack.length > 0) {
-            this.outputQueue.push( this.operatorStack.pop() );
+            this.outputQueue.push(this.operatorStack.pop());
         }
 
         this.operatorStack.push(token);
@@ -53,7 +53,7 @@ export class ShuntingYard {
 
     popOperatorStack() {
         while (this.operatorStack.length) {
-            this.outputQueue.push( this.operatorStack.pop() );
+            this.outputQueue.push(this.operatorStack.pop());
         }
     }
 }
