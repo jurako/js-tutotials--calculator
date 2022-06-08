@@ -9,8 +9,12 @@ export class MathParser {
     }
 
     execute(tokens) {
+        console.log('tokens: ' + tokens);
         let RPN = this.shuntingYard.execute(tokens);
-        console.log('test!!!');
-        console.log(RPN);
+        console.log('RPN: ' + RPN);
+        let result = this.postfixCalculator.execute(RPN);
+        console.log('result: ' + result);
+        return result;
+
     }
 }

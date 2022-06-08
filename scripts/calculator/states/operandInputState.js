@@ -30,9 +30,13 @@ export class operandInputState {
     evaluate() {
         console.log('Evaluate operandInputState!');
 
+        console.log('this.calculator.tokens: ' + this.calculator.tokens);
+        console.log('this.calculator.currentToken: ' + this.calculator.currentToken);
         this.calculator.storeCurrentToken();
-        this.calculator.mathParser.execute(this.calculator.tokens);
+        // console.log('math parser result: ' + this.calculator.mathParser.execute(this.calculator.tokens));
         this.calculator.setCalculatorState(this.calculator.getShowResultState());
+        this.calculator.currentToken = this.calculator.mathParser.execute(this.calculator.tokens);
+        this.calculator.resetTokens();
     }
 
     clear() {
