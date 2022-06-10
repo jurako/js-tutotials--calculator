@@ -9,12 +9,23 @@ export class MathParser {
     }
 
     execute(tokens) {
-        console.log('tokens: ' + tokens);
-        let RPN = this.shuntingYard.execute(tokens);
-        console.log('RPN: ' + RPN);
-        let result = this.postfixCalculator.execute(RPN);
-        console.log('result: ' + result);
-        return result;
+
+        let RPN = '';
+        let result = '0';
+
+        try {
+            RPN = this.shuntingYard.execute(tokens);
+            result = this.postfixCalculator.execute(RPN);
+
+            if (isNaN(result)) {
+                throw new Error('Error');
+            }
+
+        } catch (err) {
+            return 'Error';
+        }
+
+        return String(result);
 
     }
 }

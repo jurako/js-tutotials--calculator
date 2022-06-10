@@ -20,9 +20,14 @@ export class showResultState {
 
     inputOperator(value) {
         console.log('Input operator showResultState!');
+        console.log('test1: ' + this.calculator.currentToken);
+        console.log('test2: ' + this.calculator.tokens);
+        console.log('================================');
 
-        this.calculator.currentToken = value;
         this.calculator.storeCurrentToken();
+        console.log('test3: ' + this.calculator.currentToken);
+        console.log('test4: ' + this.calculator.tokens);
+        this.calculator.currentToken = value;
         this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
 
     }

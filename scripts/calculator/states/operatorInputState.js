@@ -5,8 +5,6 @@ export class operatorInputState {
     }
 
     inputNumber(value) {
-        console.log('Input number operatorInputState!');
-
         this.calculator.storeCurrentToken();
         this.calculator.setCalculatorState(this.calculator.getOperandInputState());
 
@@ -14,8 +12,6 @@ export class operatorInputState {
     }
 
     inputDecimal(value) {
-        console.log('Input decimal operatorInputState!');
-
         this.calculator.storeCurrentToken();
         this.calculator.setCalculatorState(this.calculator.getOperandInputState());
 
@@ -23,10 +19,8 @@ export class operatorInputState {
     }
 
     inputOperator(value) {
-        console.log('Input operator operatorInputState!');
-
         if (this.calculator.currentToken != value) {
-            
+
             if ((this.calculator.currentToken == '*' || this.calculator.currentToken == '/') && value == '-') {
                 this.calculator.storeCurrentToken();
                 this.calculator.setCalculatorState(this.calculator.getUnaryOperatorInputState());
@@ -37,15 +31,10 @@ export class operatorInputState {
     }
 
     evaluate() {
-        console.log('Evaluate operatorInputState!');
-
-        //call math parser
-        this.calculator.setCalculatorState(this.calculator.getShowResultState());
+        //do nothing
     }
 
     clear() {
-        console.log('Clear operatorInputState!');
-
         this.calculator.resetTokens();
         this.calculator.setCalculatorState(this.calculator.getNoInputState());
     }
