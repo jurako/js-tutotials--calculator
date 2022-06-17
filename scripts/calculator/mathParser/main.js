@@ -22,7 +22,7 @@ export class MathParser {
             }
 
         } catch (err) {
-            return 'Error';
+            throw err;
         }
 
         return String(result);

@@ -23,14 +23,18 @@ export class operandInputState {
 
     evaluate() {
         this.calculator.storeCurrentToken();
-        let result = this.calculator.mathParser.execute(this.calculator.tokens);
 
-        this.calculator.resetTokens();
-        this.calculator.currentToken = result;
+        try {
+            let result = this.calculator.mathParser.execute(this.calculator.tokens);
 
-        this.calculator.setCalculatorState(this.calculator.getShowResultState());
-
-
+            this.calculator.resetTokens();
+            this.calculator.currentToken = result;
+            this.calculator.setCalculatorState(this.calculator.getShowResultState());
+        } catch (err) {
+            this.calculator.resetTokens();
+            this.calculator.displayService.error();
+            this.calculator.setCalculatorState(this.calculator.getNoInputState());
+        }
     }
 
     clear() {

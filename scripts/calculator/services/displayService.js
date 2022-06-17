@@ -33,4 +33,9 @@ export class DisplayService {
             return this.htmlEntities[token] !== undefined ? this.htmlEntities[token] : token;
         }.bind(this));
     }
+
+    error() {
+        alert('test123');
+        this.display.innerHTML = 'Error';
+    }
 }

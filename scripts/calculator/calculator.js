@@ -72,8 +72,6 @@ export class Calculator {
 
 
     storeCurrentToken() {
-        console.log('this.currentToken test: ' + this.currentToken);
-        console.log('this.currentToken.length test: ' + this.currentToken.length);
         if (this.currentToken.length) {
             this.tokens.push(this.currentToken);
         }

@@ -27,8 +27,6 @@ export class ShuntingYard {
             this.handleOperand(token);
         } else if (isOperator(token)) {
             this.handleOperator(token);
-        } else {
-            //throw Error;
         }
     }
 

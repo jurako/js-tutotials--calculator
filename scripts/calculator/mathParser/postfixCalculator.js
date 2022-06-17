@@ -13,12 +13,9 @@ export class PostfixCalculator {
     }
 
     execute(tokenQueue) {
-        console.log('tokenQueue: ' + tokenQueue);
         while (tokenQueue.length > 0) {
-            console.log('this.tokenStack: ' + this.tokenStack);
             this.parse(tokenQueue.shift());
         }
-        console.log('this.tokenStack: ' + this.tokenStack);
         return this.tokenStack.pop();
     }
 
@@ -27,8 +24,6 @@ export class PostfixCalculator {
             this.handleOperand(token);
         } else if (isOperator(token)) {
             this.handleOperator(token);
-        } else {
-            //throw Error;
         }
     }
 

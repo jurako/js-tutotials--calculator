@@ -6,29 +6,38 @@
 
 :root {
     /*Backgrounds*/
-    --alabaster: #F9F9F9;   /*Number*/
-    --alto: #DDDDDD;        /*Math op*/
-    --dodger-blue: #4E8FFE; /*Equals sign*/
-    --white-bg: #FFFFFF;    /*Input*/
+    --alabaster: #F9F9F9;
+    /*Number*/
+    --alto: #DDDDDD;
+    /*Math op*/
+    --dodger-blue: #4E8FFE;
+    /*Equals sign*/
+    --white-bg: #FFFFFF;
+    /*Input*/
 
     /*Borders*/
-    --alto-darker: #BBBBBB; /*Input, math op, number*/
-    --royal-blue: #377DF0;  /*Equals sign*/
+    --alto-darker: #BBBBBB;
+    /*Input, math op, number*/
+    --royal-blue: #377DF0;
+    /*Equals sign*/
 
     /*Font*/
-    --cod-gray: #101010;    /*Number, math op*/
-    --white-font: #FFFFFF;  /*Equals sign*/
+    --cod-gray: #101010;
+    /*Number, math op*/
+    --white-font: #FFFFFF;
+    /*Equals sign*/
 }
 
 body {
     font-family: 'Lato', sans-serif;
-    
+
 }
 
 /*Layout modules*/
 .l-calculator {
     height: 80vh;
     width: 40vw;
+    min-width: 290px;
 
     margin: 0 auto;
     position: relative;
@@ -42,11 +51,11 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-template-areas: "input input input input"
-                         "add   sub   mul   div"
-                         "seven eight nine  eq"
-                         "four  five  six   eq"
-                         "one   two   three eq"
-                         "zero  dec   clear eq";
+        "add   sub   mul   div"
+        "seven eight nine  eq"
+        "four  five  six   eq"
+        "one   two   three eq"
+        "zero  dec   clear eq";
     gap: 15px;
     padding: 15px;
     border: 2px solid var(--alto);
@@ -57,41 +66,105 @@ body {
 
 }
 
-.calculator__display  { grid-area: input; }
+.calculator__display {
+    grid-area: input;
+}
 
-.calculator__math-op.add  { grid-area: add; }
-.calculator__math-op.sub  { grid-area: sub; }
-.calculator__math-op.mul  { grid-area: mul; }
-.calculator__math-op.div  { grid-area: div; }
+.calculator__math-op.add {
+    grid-area: add;
+}
 
-.calculator__number.zero  { grid-area: zero; }
-.calculator__number.one   { grid-area: one; }
-.calculator__number.two   { grid-area: two; }
-.calculator__number.three { grid-area: three; }
-.calculator__number.four  { grid-area: four; }
-.calculator__number.five  { grid-area: five; }
-.calculator__number.six   { grid-area: six; }
-.calculator__number.seven { grid-area: seven; }
-.calculator__number.eight { grid-area: eight; }
-.calculator__number.nine  { grid-area: nine; }
+.calculator__math-op.sub {
+    grid-area: sub;
+}
 
-.calculator__eq           { grid-area: eq; }
-.calculator__dec-point    { grid-area: dec; }
-.calculator__clear        { grid-area: clear; }
+.calculator__math-op.mul {
+    grid-area: mul;
+}
+
+.calculator__math-op.div {
+    grid-area: div;
+}
+
+.calculator__number.zero {
+    grid-area: zero;
+}
+
+.calculator__number.one {
+    grid-area: one;
+}
+
+.calculator__number.two {
+    grid-area: two;
+}
+
+.calculator__number.three {
+    grid-area: three;
+}
+
+.calculator__number.four {
+    grid-area: four;
+}
+
+.calculator__number.five {
+    grid-area: five;
+}
+
+.calculator__number.six {
+    grid-area: six;
+}
+
+.calculator__number.seven {
+    grid-area: seven;
+}
+
+.calculator__number.eight {
+    grid-area: eight;
+}
+
+.calculator__number.nine {
+    grid-area: nine;
+}
+
+.calculator__eq {
+    grid-area: eq;
+}
+
+.calculator__dec-point {
+    grid-area: dec;
+}
+
+.calculator__clear {
+    grid-area: clear;
+}
 
 
-.calculator__eq          { background-color: var(--dodger-blue); }
-.calculator__math-op     { background-color: var(--alto); }
-.calculator__display { background-color: var(--white-bg); }
-.calculator__number, .calculator__dec-point, .calculator__clear { background-color: var(--alabaster); }
+.calculator__eq {
+    background-color: var(--dodger-blue);
+}
+
+.calculator__math-op {
+    background-color: var(--alto);
+}
+
+.calculator__display {
+    background-color: var(--white-bg);
+}
+
+.calculator__number,
+.calculator__dec-point,
+.calculator__clear {
+    background-color: var(--alabaster);
+}
 
 
 .calculator__button,
-.calculator__display { 
+.calculator__display {
     border: 1px solid var(--alto-darker);
 }
-.calculator__eq { 
-    border: 1px solid var(--royal-blue); 
+
+.calculator__eq {
+    border: 1px solid var(--royal-blue);
     color: var(--white-font);
 }
 
