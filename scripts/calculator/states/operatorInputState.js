@@ -36,6 +36,6 @@ export class operatorInputState {
 
     clear() {
         this.calculator.resetTokens();
-        this.calculator.setCalculatorState(this.calculator.getNoInputState());
+        this.calculator.setCalculatorState(this.calculator.getShowResultState());
     }
 }

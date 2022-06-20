@@ -15,9 +15,17 @@ export class showResultState {
     }
 
     inputOperator(value) {
-        this.calculator.storeCurrentToken();
+        let noInput = this.calculator.tokens.length == 0 &&
+            this.calculator.currentToken == '0';
+
+        if (value == '-' && noInput) {
+            this.calculator.setCalculatorState(this.calculator.getUnaryOperatorInputState());
+        } else {
+            this.calculator.storeCurrentToken();
+            this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
+        }
+
         this.calculator.currentToken = value;
-        this.calculator.setCalculatorState(this.calculator.getOperatorInputState());
     }
 
     evaluate() {
@@ -26,6 +34,6 @@ export class showResultState {
 
     clear() {
         this.calculator.resetTokens();
-        this.calculator.setCalculatorState(this.calculator.getNoInputState());
+        this.calculator.setCalculatorState(this.calculator.getShowResultState());
     }
 }

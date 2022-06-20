@@ -33,12 +33,12 @@ export class operandInputState {
         } catch (err) {
             this.calculator.resetTokens();
             this.calculator.displayService.error();
-            this.calculator.setCalculatorState(this.calculator.getNoInputState());
+            this.calculator.setCalculatorState(this.calculator.getShowResultState());
         }
     }
 
     clear() {
         this.calculator.resetTokens();
-        this.calculator.setCalculatorState(this.calculator.getNoInputState());
+        this.calculator.setCalculatorState(this.calculator.getShowResultState());
     }
 }

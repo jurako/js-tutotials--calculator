@@ -1,4 +1,3 @@
-import { noInputState } from './states/noInputState.js';
 import { operandInputState } from './states/operandInputState.js';
 import { operatorInputState } from './states/operatorInputState.js';
 import { unaryOperatorInputState } from './states/unaryOperatorInputState.js';
@@ -14,13 +13,12 @@ export class Calculator {
         this.init(newCalculator);
         this.domElement = newCalculator;
 
-        this.noInputState = new noInputState(this);
+        this.showResultState = new showResultState(this);
         this.operandInputState = new operandInputState(this);
         this.operatorInputState = new operatorInputState(this);
         this.unaryOperatorInputState = new unaryOperatorInputState(this);
-        this.showResultState = new showResultState(this);
 
-        this.calculatorState = this.noInputState;
+        this.calculatorState = this.showResultState;
 
         this.inputService = new InputService(this);
         this.displayService = new DisplayService(this);
@@ -54,8 +52,8 @@ export class Calculator {
         this.calculatorState = newCalculatorState;
     }
 
-    getNoInputState() {
-        return this.noInputState;
+    getShowResultState() {
+        return this.showResultState;
     }
     getOperandInputState() {
         return this.operandInputState;
@@ -65,9 +63,6 @@ export class Calculator {
     }
     getUnaryOperatorInputState() {
         return this.unaryOperatorInputState;
-    }
-    getShowResultState() {
-        return this.showResultState;
     }
 
 
