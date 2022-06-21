@@ -22,19 +22,12 @@ export class operandInputState {
     }
 
     evaluate() {
+        this.calculator.setCalculatorState(this.calculator.getShowResultState());
+
         this.calculator.storeCurrentToken();
-
-        try {
-            let result = this.calculator.mathParser.execute(this.calculator.tokens);
-
-            this.calculator.resetTokens();
-            this.calculator.currentToken = result;
-            this.calculator.setCalculatorState(this.calculator.getShowResultState());
-        } catch (err) {
-            this.calculator.resetTokens();
-            this.calculator.displayService.error();
-            this.calculator.setCalculatorState(this.calculator.getShowResultState());
-        }
+        let result = this.calculator.mathParser.execute(this.calculator.tokens);
+        this.calculator.resetTokens();
+        this.calculator.currentToken = result;
     }
 
     clear() {

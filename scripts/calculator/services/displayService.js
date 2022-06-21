@@ -35,7 +35,7 @@ export class DisplayService {
     }
 
     error() {
-        alert('test123');
+        this.calculator.resetTokens();
         this.display.innerHTML = 'Error';
     }
 }

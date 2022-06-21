@@ -80,8 +80,12 @@ export class Calculator {
     init(newCalculator) {
         newCalculator.addEventListener('click', function (event) {
 
-            this.inputService.handleInput(event);
-            this.displayService.update();
+            try {
+                this.inputService.handleInput(event);
+                this.displayService.update();
+            } catch (err) {
+                this.displayService.error();
+            }
 
         }.bind(this));
     }
